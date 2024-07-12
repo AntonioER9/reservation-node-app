@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node src/app/server_app/Launcher.ts",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "itest": "jest --config itest.config.ts"
   },
   "keywords": [],
   "author": "Antonio Espinoza",
