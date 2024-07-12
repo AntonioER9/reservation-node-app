@@ -3,23 +3,23 @@ import { HTTP_METHODS } from "../../../app/server_app/model/ServerModel"
 
 export class RequestTestWrapper {
 
-  public body: object = {};
-  public method: HTTP_METHODS = HTTP_METHODS.GET;
-  public url: string = '';
-  public headers = {}
+    public body: object | undefined;
+    public method: HTTP_METHODS| undefined;
+    public url: string| undefined;
+    public headers:Record<string, string> = {}
 
-  public on(event: any, cb: any) {
-    if (event == 'data') {
-      cb(JSON.stringify(this.body));
-    } else {
-      cb()
+    public on(event: any, cb: Function) {
+        if(event == 'data') {
+            cb(JSON.stringify(this.body));
+        } else {
+            cb()
+        }
     }
-  }
 
-  public clearFields() {
-    this.body = undefined as any;
-    this.method = undefined as any;
-    this.url = undefined as any;
-    this.headers = {};
-  }
+    public clearFields(){
+        this.body = undefined;
+        this.method = undefined;
+        this.url = undefined;
+        this.headers = {};
+    }
 }

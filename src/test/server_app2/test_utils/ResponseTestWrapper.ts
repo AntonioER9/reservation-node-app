@@ -3,24 +3,24 @@ import { HTTP_CODES } from "../../../app/server_app/model/ServerModel";
 
 export class ResponseTestWrapper {
 
-  public statusCode: HTTP_CODES = HTTP_CODES.OK;
-  public headers = new Array<object>();
-  public body: object = {};
+    public statusCode: HTTP_CODES | undefined;
+    public headers = new Array<object>();
+    public body: object | undefined;
 
-  public writeHead(statusCode: HTTP_CODES, header: object) {
-    this.statusCode = statusCode;
-    this.headers.push(header);
-  }
+    public writeHead(statusCode: HTTP_CODES, header: object) {
+        this.statusCode = statusCode;
+        this.headers.push(header);
+    }
 
-  public write(stringifiedBody: string) {
-    this.body = JSON.parse(stringifiedBody);
-  }
+    public write(stringifiedBody: string) {
+        this.body = JSON.parse(stringifiedBody);
+    }
 
-  public end() { }
+    public end(){}
 
-  public clearFields() {
-    this.statusCode = undefined as any;
-    this.body = undefined as any;
-    this.headers.length = 0;
-  }
+    public clearFields(){
+        this.statusCode = undefined;
+        this.body = undefined;
+        this.headers.length = 0;
+    }
 }
