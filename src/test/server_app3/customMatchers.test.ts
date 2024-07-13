@@ -6,7 +6,7 @@ expect.extend({
 
         const validId = (reservation.id.length > 5) ? true : false;
 
-        const validUser = (reservation.id.length > 5) ? true : false;
+        const validUser = (reservation.user.length > 5) ? true : false;
 
         return {
             pass: validId && validUser,
@@ -32,9 +32,6 @@ declare global {
         interface Matchers<R> extends CustomMatchers<R> {}
     }
 }
-
-
-
 
 const someReservation: Reservation = {
     id: '123456',
